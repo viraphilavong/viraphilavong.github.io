@@ -6,4 +6,4 @@ cp ./dist/assets/*.{png,jpg} ../static/media
 cp ./dist/.vite/* ../ # this will copy over the manifest
 cd ..
 git add .
-git commit -m "deploy"
+git commit -m "ran deploy script"

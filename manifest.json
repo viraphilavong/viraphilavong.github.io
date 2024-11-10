@@ -1,15 +1,26 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": "./index.html",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "index.html": {
+    "file": "assets/index-B91dXKFu.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/views/AboutView.vue"
+    ],
+    "css": [
+      "assets/index-5dJgFXHu.css"
+    ]
+  },
+  "src/views/AboutView.vue": {
+    "file": "assets/AboutView-CwK3xPDW.js",
+    "name": "AboutView",
+    "src": "src/views/AboutView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ],
+    "css": [
+      "assets/AboutView-CSIvawM9.css"
+    ]
+  }
 }

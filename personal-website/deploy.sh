@@ -7,3 +7,4 @@ cp ./dist/.vite/* ../ # this will copy over the manifest
 cd ..
 git add .
 git commit -m "ran deploy script"
+git push

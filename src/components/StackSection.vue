@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Card from 'primevue/card'
+
 import SectionHeading from '@/components/SectionHeading.vue'
 import { stack } from '@/data/stack'
 </script>
@@ -7,12 +9,16 @@ import { stack } from '@/data/stack'
   <section id="stack" class="section">
     <SectionHeading label="03 - Skills &amp; tools" />
     <div class="grid">
-      <div v-for="group in stack" :key="group.title" class="group panel">
-        <p class="label">{{ group.title }}</p>
-        <ul class="items">
-          <li v-for="item in group.items" :key="item">{{ item }}</li>
-        </ul>
-      </div>
+      <Card v-for="group in stack" :key="group.title" class="group">
+        <template #title>
+          <p class="label">{{ group.title }}</p>
+        </template>
+        <template #content>
+          <ul class="items">
+            <li v-for="item in group.items" :key="item">{{ item }}</li>
+          </ul>
+        </template>
+      </Card>
     </div>
   </section>
 </template>
@@ -26,6 +32,8 @@ import { stack } from '@/data/stack'
 
 .group {
   border-top: 1px solid var(--t-line);
+  /* Card resolves its own radius token, which isn't Nocturne's 8px. */
+  border-radius: var(--t-rad);
 }
 
 .label {

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import Message from 'primevue/message'
+import Skeleton from 'primevue/skeleton'
+import Tag from 'primevue/tag'
+
 import SectionHeading from '@/components/SectionHeading.vue'
 import { useBlogPosts } from '@/composables/useBlogPosts'
 import { BLOG_URL } from '@/data/profile'
@@ -14,7 +18,14 @@ const { posts, state } = useBlogPosts()
       <a class="visit" :href="BLOG_URL" target="_blank" rel="noopener">Visit the blog &#8599;</a>
     </div>
 
-    <p v-if="state === 'loading'" class="status">Loading posts&hellip;</p>
+    <!-- Skeletons mirror the shape of a loaded post so the section doesn't jump. -->
+    <div v-if="state === 'loading'" class="posts">
+      <div v-for="n in 2" :key="n" class="post-link skeleton-row">
+        <Skeleton width="5rem" height="1.1rem" />
+        <Skeleton width="min(24rem, 80%)" height="1.4rem" />
+        <Skeleton width="min(38rem, 100%)" height="1rem" />
+      </div>
+    </div>
 
     <div v-else-if="state === 'loaded'" class="posts">
       <a
@@ -26,7 +37,7 @@ const { posts, state } = useBlogPosts()
         rel="noopener"
       >
         <span class="post-meta">
-          <span v-if="post.tag" class="tag">{{ post.tag }}</span>
+          <Tag v-if="post.tag" :value="post.tag" severity="primary" class="tag" />
           <span v-if="post.date" class="date">{{ post.date }}</span>
         </span>
         <span class="post-title">{{ post.title }}</span>
@@ -35,12 +46,14 @@ const { posts, state } = useBlogPosts()
     </div>
 
     <!-- Fallback so the section is never broken if the feed can't be reached. -->
-    <a v-else class="post-link fallback panel" :href="BLOG_URL" target="_blank" rel="noopener">
-      <span class="fallback-kicker">learn.tech-everyday.com</span>
-      <span class="post-title">The Tech Everyday blog</span>
-      <span class="post-snippet">Read the latest posts over on the blog.</span>
-      <span class="date">Visit the blog &#8599;</span>
-    </a>
+    <Message v-else severity="info" :closable="false" class="fallback">
+      <a class="fallback-link" :href="BLOG_URL" target="_blank" rel="noopener">
+        <span class="fallback-kicker">learn.tech-everyday.com</span>
+        <span class="post-title">The Tech Everyday blog</span>
+        <span class="post-snippet">Read the latest posts over on the blog.</span>
+        <span class="date">Visit the blog &#8599;</span>
+      </a>
+    </Message>
   </section>
 </template>
 
@@ -72,16 +85,13 @@ const { posts, state } = useBlogPosts()
   color: var(--color-accent);
 }
 
-.status {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--t-faint);
-  margin: 22px 0;
-}
-
 .posts {
   display: grid;
   gap: 0;
+}
+
+.skeleton-row {
+  cursor: default;
 }
 
 .post-meta {
@@ -92,12 +102,7 @@ const { posts, state } = useBlogPosts()
 
 .tag {
   font-family: var(--font-mono);
-  font-size: 11px;
   letter-spacing: 0.04em;
-  padding: 3px 8px;
-  border: 1px solid var(--t-line);
-  border-radius: 999px;
-  color: var(--t-mute);
 }
 
 .date {
@@ -124,10 +129,15 @@ const { posts, state } = useBlogPosts()
 }
 
 .fallback {
-  gap: 8px;
-  /* Even padding, overriding the taller row padding .post-link carries. */
-  padding: var(--t-panel-pad);
   margin-top: 6px;
+  border: 1px solid var(--t-line);
+}
+
+.fallback-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-text);
 }
 
 .fallback-kicker {

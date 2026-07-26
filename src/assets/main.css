@@ -154,6 +154,9 @@ a:hover {
   padding: 9px 14px;
   border: 1px solid;
   border-radius: var(--t-rad);
+  /* Nocturne outlines its actions — never a solid fill, including over
+     whatever background a component library brings with it. */
+  background: transparent;
 }
 .btn-accent {
   border-color: var(--color-accent);

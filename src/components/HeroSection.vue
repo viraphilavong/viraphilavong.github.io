@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Button from 'primevue/button'
+
 import { HEADSHOT_URL, heroActions, profile } from '@/data/profile'
 </script>
 
@@ -9,17 +11,19 @@ import { HEADSHOT_URL, heroActions, profile } from '@/data/profile'
       <h1 class="name">Alexander Vira<br />Philavong</h1>
       <p class="intro">{{ profile.intro }}</p>
       <div class="actions">
-        <a
+        <Button
           v-for="action in heroActions"
           :key="action.href"
-          class="btn"
+          as="a"
+          class="action btn"
           :class="action.primary ? 'btn-accent' : 'btn-line'"
+          :label="action.label"
           :href="action.href"
           :target="action.external ? '_blank' : undefined"
           :rel="action.external ? 'noopener' : undefined"
-        >
-          {{ action.label }}
-        </a>
+          outlined
+          :severity="action.primary ? 'primary' : 'secondary'"
+        />
       </div>
     </div>
 
@@ -83,6 +87,13 @@ import { HEADSHOT_URL, heroActions, profile } from '@/data/profile'
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+}
+
+/* Keep the mono label treatment PrimeVue's Button doesn't assume. */
+.action :deep(.p-button-label) {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .aside {

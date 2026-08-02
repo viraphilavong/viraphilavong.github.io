@@ -3,7 +3,8 @@ import { readonly, ref } from 'vue'
 export type ThemeName = 'dark' | 'light'
 
 // Module-scoped so every caller shares one theme, no prop threading.
-const theme = ref<ThemeName>('dark')
+// Keep in step with the data-theme attribute in index.html.
+const theme = ref<ThemeName>('light')
 
 function apply(next: ThemeName) {
   document.documentElement.setAttribute('data-theme', next)

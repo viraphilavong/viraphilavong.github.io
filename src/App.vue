@@ -2,13 +2,14 @@
 import { onMounted } from 'vue'
 
 import AboutSection from '@/components/AboutSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
 import ExperienceSection from '@/components/ExperienceSection.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import SiteHeader from '@/components/SiteHeader.vue'
 import StackSection from '@/components/StackSection.vue'
-import WritingSection from '@/components/WritingSection.vue'
+// Writing is paused until posts are regular again — restore this import, the
+// <WritingSection /> below, and the nav link in data/profile.ts together.
+// import WritingSection from '@/components/WritingSection.vue'
 import { useTheme } from '@/composables/useTheme'
 
 const { syncTheme } = useTheme()
@@ -24,8 +25,7 @@ onMounted(syncTheme)
       <AboutSection />
       <ExperienceSection />
       <StackSection />
-      <WritingSection />
-      <ContactSection />
+      <!-- <WritingSection /> -->
       <SiteFooter />
     </main>
   </div>

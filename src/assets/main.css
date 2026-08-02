@@ -1,44 +1,53 @@
 /* Nocturne — design tokens + base styles for the portfolio.
-   Derived from the Nocturne design system (readme.md): a quiet, compact dark
-   interface on a near-neutral blue-grey ground, Inter for body, JetBrains Mono
-   for interface chrome, a single blurple accent used as line and glow. */
+   Built on the Nocturne design system: compact scales, soft 8px radii, and a
+   single blurple accent used as a line rather than a flood. Inter for body,
+   JetBrains Mono for interface chrome.
+
+   Light is the default ground, matched to tech-everyday.com — a white page on
+   a neutral grey ramp rather than a tinted one. Dark is kept behind the
+   toggle; both themes read from the same variables below. */
 
 :root {
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Dark theme (default) */
+  /* Light theme (default) — grounds taken from tech-everyday.com. */
+  --color-bg: #ffffff;
+  --color-text: #141416;
+  --color-surface: #f5f5f6;
+  --color-accent: #796cbf;
+  --color-accent-hover: #5d5294; /* accent-600 — legible on a light ground */
+  --color-divider: color-mix(in srgb, var(--color-text) 12%, transparent);
+
+  --t-mute: color-mix(in srgb, var(--color-text) 62%, transparent);
+  --t-faint: color-mix(in srgb, var(--color-text) 44%, transparent);
+  --t-line: color-mix(in srgb, var(--color-text) 12%, transparent);
+  --t-shimmer: rgba(255, 255, 255, 0.6);
+
+  --t-rad: 8px;
+  --t-panel: var(--color-surface);
+  --t-panel-pad: 22px;
+  /* Surface and ground sit close together on purpose; the shadow, not the
+     fill, is what separates a panel from the page. */
+  --t-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.1);
+  --t-body: var(--font-body);
+}
+
+:root[data-theme='dark'] {
   --color-bg: #161826;
   --color-text: #e9e9ed;
   --color-surface: #232532;
   --color-accent: #968ae0;
   --color-accent-hover: #d2cefd; /* accent-300 */
-  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
 
   --t-mute: color-mix(in srgb, var(--color-text) 52%, transparent);
   --t-faint: color-mix(in srgb, var(--color-text) 34%, transparent);
   --t-line: color-mix(in srgb, var(--color-text) 15%, transparent);
+  --t-shimmer: rgba(255, 255, 255, 0.06);
 
-  --t-rad: 8px;
-  --t-panel: var(--color-surface);
-  --t-panel-pad: 22px;
   --t-shadow: 0 0 0 1px color-mix(in srgb, var(--color-text) 10%, transparent),
     0 8px 24px rgba(0, 0, 0, 0.45);
-  --t-body: var(--font-body);
-}
-
-:root[data-theme='light'] {
-  --color-bg: #f3f5fe;
-  --color-text: #292b31;
-  --color-surface: #e4e7f5;
-  --color-accent: #796cbf;
-  --color-accent-hover: #5d5294; /* accent-600 — legible on a light ground */
-
-  --t-mute: color-mix(in srgb, var(--color-text) 62%, transparent);
-  --t-faint: color-mix(in srgb, var(--color-text) 44%, transparent);
-  --t-line: color-mix(in srgb, var(--color-text) 15%, transparent);
-  --t-shadow: 0 0 0 1px color-mix(in srgb, var(--color-text) 8%, transparent),
-    0 6px 18px rgba(41, 43, 49, 0.1);
 }
 
 *,

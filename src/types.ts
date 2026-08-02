@@ -41,12 +41,6 @@ export interface ActionLink {
   external?: boolean
 }
 
-export interface ElsewhereLink {
-  label: string
-  value: string
-  href: string
-}
-
 /** A post from the blog feed. */
 export interface BlogPost {
   title: string

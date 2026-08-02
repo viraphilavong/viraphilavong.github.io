@@ -5,8 +5,7 @@ import { profile } from '@/data/profile'
 <template>
   <footer class="footer">
     <div>
-      <p class="line">{{ profile.education }}</p>
-      <p class="line last">{{ profile.volunteering }}</p>
+      <p class="line last">{{ profile.education }}</p>
     </div>
     <p class="line last">
       Champlin, MN &nbsp;&middot;&nbsp; <span class="accent">~</span> vira.philavong

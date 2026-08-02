@@ -186,7 +186,7 @@ export const Nocturne = definePreset(Aura, {
     skeleton: {
       borderRadius: 'var(--t-rad)',
       background: 'color-mix(in srgb, var(--color-text) 8%, transparent)',
-      animationBackground: 'rgba(255, 255, 255, 0.06)',
+      animationBackground: 'var(--t-shimmer)',
     },
     message: {
       borderRadius: 'var(--t-rad)',

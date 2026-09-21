@@ -22,9 +22,9 @@ onMounted(syncTheme)
     <SiteHeader />
     <main class="wrap">
       <HeroSection />
+      <StackSection />
       <AboutSection />
       <ExperienceSection />
-      <StackSection />
       <!-- <WritingSection /> -->
       <SiteFooter />
     </main>

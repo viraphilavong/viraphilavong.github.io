@@ -22,9 +22,9 @@ export const profile = {
 }
 
 export const navLinks: NavLink[] = [
+  { label: 'stack', href: '#stack' },
   { label: 'about', href: '#about' },
   { label: 'experience', href: '#experience' },
-  { label: 'stack', href: '#stack' },
   // Restore alongside the writing section in App.vue.
   // { label: 'writing', href: '#writing' },
 ]

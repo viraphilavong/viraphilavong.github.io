@@ -22,8 +22,8 @@ onMounted(syncTheme)
     <SiteHeader />
     <main class="wrap">
       <HeroSection />
-      <StackSection />
       <AboutSection />
+      <StackSection />
       <ExperienceSection />
       <!-- <WritingSection /> -->
       <SiteFooter />

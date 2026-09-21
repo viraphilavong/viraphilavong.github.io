@@ -5,7 +5,7 @@ import { strengths } from '@/data/profile'
 
 <template>
   <section id="about" class="section">
-    <SectionHeading label="02 - About" />
+    <SectionHeading label="01 - About" />
     <div class="columns">
       <div class="panel">
         <p class="para">

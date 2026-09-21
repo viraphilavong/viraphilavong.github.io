@@ -7,7 +7,7 @@ import { stack } from '@/data/stack'
 
 <template>
   <section id="stack" class="section">
-    <SectionHeading label="01 - Skills &amp; tools" />
+    <SectionHeading label="02 - Skills &amp; tools" />
     <div class="grid">
       <Card v-for="group in stack" :key="group.title" class="group">
         <template #title>

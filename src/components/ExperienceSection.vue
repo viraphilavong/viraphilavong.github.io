@@ -8,7 +8,7 @@ import { experience } from '@/data/experience'
 
 <template>
   <section id="experience" class="section">
-    <SectionHeading label="02 - Experience" />
+    <SectionHeading label="03 - Experience" />
     <Timeline :value="experience" class="timeline">
       <template #opposite="{ item }">
         <span class="period">{{ item.period }}</span>
